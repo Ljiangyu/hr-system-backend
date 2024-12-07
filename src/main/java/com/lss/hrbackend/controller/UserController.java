@@ -43,8 +43,8 @@ public class UserController {
      */
     @PostMapping("/user/login")
     @Operation(summary = "用户登陆", description = "用户登陆")
-    public Result<User> login(@RequestBody UserInfo userInfo, HttpServletResponse httpServletResponse) {
-       Result<User> result = userService.login(userInfo,httpServletResponse);
+    public Result<String> login(@RequestBody UserInfo userInfo, HttpServletResponse httpServletResponse) {
+       Result<String> result = userService.login(userInfo,httpServletResponse);
        return result;
     }
 }
