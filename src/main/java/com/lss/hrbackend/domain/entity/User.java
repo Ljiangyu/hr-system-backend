@@ -1,7 +1,7 @@
 package com.lss.hrbackend.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +12,9 @@ import java.util.Date;
  */
 @TableName(value ="t_user")
 @Data
+@Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
     /**
      * id
