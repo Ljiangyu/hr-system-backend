@@ -9,10 +9,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author lss
@@ -22,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @Tag(name = "user")
+@Slf4j(topic = "user")
 public class UserController {
+
     /**
      * todo 用户名不可重复
      */
@@ -44,7 +44,20 @@ public class UserController {
     @PostMapping("/user/login")
     @Operation(summary = "用户登陆", description = "用户登陆")
     public Result<String> login(@RequestBody UserInfo userInfo, HttpServletResponse httpServletResponse) {
-       Result<String> result = userService.login(userInfo,httpServletResponse);
-       return result;
+        Result<String> result = userService.login(userInfo, httpServletResponse);
+        return result;
+    }
+
+    /**
+     * 获取用户数据
+     *
+     * @return
+     */
+    @GetMapping("/user/getInfo")
+    @Operation(summary = "获取用户信息", description = "获取用户信息")
+    public Result<User> getUserInfo() {
+        User user = userService.getUserInfo();
+        log.info("result ===> {}",Result.success(user));
+        return Result.success(user);
     }
 }

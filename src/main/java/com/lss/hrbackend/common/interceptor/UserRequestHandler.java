@@ -1,22 +1,24 @@
 package com.lss.hrbackend.common.interceptor;
 
 import com.alibaba.fastjson.JSON;
-import com.lss.hrbackend.common.userConfig.UserContext;
 import com.lss.hrbackend.common.constant.HrConstant;
+import com.lss.hrbackend.common.userConfig.UserContext;
 import com.lss.hrbackend.common.userConfig.UserInfo;
 import com.lss.hrbackend.domain.entity.User;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 @Slf4j(topic = "UserRequestHandler")
+@Component
 public class UserRequestHandler implements HandlerInterceptor {
 
     // ThreadLocal 用于保存当前线程的 Token
-    @Resource
+    @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
     @Override
