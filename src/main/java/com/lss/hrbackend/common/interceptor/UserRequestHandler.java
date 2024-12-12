@@ -2,6 +2,7 @@ package com.lss.hrbackend.common.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import com.lss.hrbackend.common.constant.HrConstant;
+import com.lss.hrbackend.common.exception.LoginException;
 import com.lss.hrbackend.common.userConfig.UserContext;
 import com.lss.hrbackend.common.userConfig.UserInfo;
 import com.lss.hrbackend.domain.entity.User;
@@ -42,6 +43,9 @@ public class UserRequestHandler implements HandlerInterceptor {
             return false;  // 拦截，返回错误响应
         }
         String userJson = redisTemplate.opsForValue().get(HrConstant.RedisKey.LOGIN_KEY + token);
+        if (userJson == null || "".equals(userJson)){
+            throw new LoginException("token 异常");
+        }
         log.info("userjson ----------> {}",userJson);
         User user = JSON.parseObject(userJson, User.class);
         UserInfo userInfo = UserInfo.builder()

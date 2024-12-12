@@ -1,6 +1,7 @@
 package com.lss.hrbackend.config;
 
 import com.lss.hrbackend.common.exception.BusinessException;
+import com.lss.hrbackend.common.exception.LoginException;
 import com.lss.hrbackend.common.result.Result;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Result<String>> handleException(Exception ex, WebRequest request) {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "系统错误: " + ex.getMessage());
     }
-
+    @ExceptionHandler(LoginException.class)
+    public ResponseEntity<Result<String>> handleLoginException(Exception ex, WebRequest request) {
+        return buildResponse(HttpStatus.UNAUTHORIZED, "系统错误: " + ex.getMessage());
+    }
     /**
      * 处理业务异常 (例如自定义异常)
      */
