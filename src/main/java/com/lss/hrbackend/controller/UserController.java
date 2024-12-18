@@ -4,6 +4,7 @@ import com.lss.hrbackend.common.result.Result;
 import com.lss.hrbackend.common.userConfig.UserInfo;
 import com.lss.hrbackend.domain.entity.User;
 import com.lss.hrbackend.dto.req.UserReq;
+import com.lss.hrbackend.dto.req.UserUpdatePwd;
 import com.lss.hrbackend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,6 +29,13 @@ public class UserController {
      */
     @Resource
     private UserService userService;
+
+
+    @PostMapping("/user/updatePwd")
+    @Operation(summary = "修改密码",description = "修改用户密码")
+    public Result updatePassword(@RequestBody UserUpdatePwd userReq){
+        return userService.updatePwd(userReq);
+    }
 
     @PostMapping("/user/register")
     @Operation(summary = "用户注册", description = "用户注册desc")

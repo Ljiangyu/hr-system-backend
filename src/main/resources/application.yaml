@@ -10,6 +10,12 @@ spring:
         username: root
         password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
+#    sql:
+#        init:
+#            schema-locations: classpath:db/schema-h2.sql
+#            data-locations: classpath:db/data-h2.sql
+#            mode: always
+
     data:
         redis:
             host: 127.0.0.1

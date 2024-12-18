@@ -44,6 +44,7 @@ public class UserRequestHandler implements HandlerInterceptor {
         }
         String userJson = redisTemplate.opsForValue().get(HrConstant.RedisKey.LOGIN_KEY + token);
         if (userJson == null || "".equals(userJson)){
+            log.info("UserRequestHandler ==========> token 异常");
             throw new LoginException("token 异常");
         }
         log.info("userjson ----------> {}",userJson);

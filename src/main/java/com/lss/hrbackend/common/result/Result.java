@@ -23,14 +23,18 @@ public class Result<T> {
         this.data = data;
     }
 
+    public Result(int code) {
+        this.code = code;
+    }
+
     // 成功响应的静态方法
     public static <T> Result<T> success(T data) {
         return new Result<>(ResponseCode.SUCCESS_CODE, "操作成功", data);
     }
 
     // 失败响应的静态方法
-    public static <T> Result<T> failure(int code, String message) {
-        return new Result<>(code, message, null);
+    public static <T> Result<T> failure(int code) {
+        return new Result<>(code);
     }
 
     // 错误响应的静态方法

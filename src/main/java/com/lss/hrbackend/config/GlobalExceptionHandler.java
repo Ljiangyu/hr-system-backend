@@ -2,6 +2,7 @@ package com.lss.hrbackend.config;
 
 import com.lss.hrbackend.common.exception.BusinessException;
 import com.lss.hrbackend.common.exception.LoginException;
+import com.lss.hrbackend.common.exception.QueryResException;
 import com.lss.hrbackend.common.result.Result;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Result<String>> handleBusinessException(BusinessException ex, WebRequest request) {
         return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
-
+    @ExceptionHandler(QueryResException.class)
+    public ResponseEntity<Result<String>> handleQueryNullException(QueryResException exception, WebRequest request){
+        return buildResponse(HttpStatus.NO_CONTENT, exception.getMessage());
+    }
     /**
      * 处理方法参数校验异常 (如 @Valid 校验失败)
      */
