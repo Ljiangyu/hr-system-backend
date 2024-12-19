@@ -47,7 +47,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String token = UserContext.getCurrentUser().getToken();
         String userJson = redisTemplate.opsForValue().get(HrConstant.RedisKey.LOGIN_KEY + token);
         User user = JSON.parseObject(userJson, User.class);
-        user.setPassword("");
         log.info("user ====> {}", user);
         return user;
     }

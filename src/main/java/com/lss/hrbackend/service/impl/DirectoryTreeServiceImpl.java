@@ -53,7 +53,6 @@ public class DirectoryTreeServiceImpl extends ServiceImpl<DirectoryTreeMapper, D
      * @param root root
      */
     private void buildMenu(List<DirectoryTree> list, DirectoryTree root) {
-        log.info("begin");
         List<DirectoryTree> children = new ArrayList<>();
         for (DirectoryTree directory : list) {
             if (directory.getParentId() != null && directory.getParentId().equals(root.getId())) {
@@ -67,7 +66,6 @@ public class DirectoryTreeServiceImpl extends ServiceImpl<DirectoryTreeMapper, D
         }
         // 将构建好的子节点列表赋值给当前节点的children属性
         root.setChildren(children);
-        log.info("end");
     }
 
 }

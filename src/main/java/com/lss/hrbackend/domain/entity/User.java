@@ -2,6 +2,7 @@ package com.lss.hrbackend.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
+import org.apache.ibatis.annotations.Select;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,6 +28,7 @@ public class User implements Serializable {
     /**
      * 用户名
      */
+    @TableField(select = false)
     private String username;
 
     /**
