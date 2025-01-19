@@ -5,6 +5,8 @@ import com.lss.hrbackend.common.result.Result;
 import com.lss.hrbackend.domain.Vo.DirectoryVo;
 import com.lss.hrbackend.domain.entity.DirectoryTree;
 
+import java.util.Map;
+
 
 /**
 * @author 江里的鱼
@@ -20,4 +22,13 @@ public interface DirectoryTreeService extends IService<DirectoryTree> {
      * @return
      */
     Result addMenu(DirectoryTree directoryTree);
+
+    /**
+     * 获取部门
+     * @param id
+     * @return
+     */
+    Result getDetails(String id);
+
+    Result updateDirTree(String id, Map<String, String> map);
 }

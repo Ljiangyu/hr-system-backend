@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 江里的鱼
@@ -28,6 +29,21 @@ public class DirectoryTreeServiceImpl extends ServiceImpl<DirectoryTreeMapper, D
         if (insert > 0)
             return Result.success(null);
         else return Result.error("更新失败！");
+    }
+
+    @Override
+    public Result getDetails(String id) {
+        DirectoryTree directoryTree = baseMapper.selectById(id);
+        return Result.success(directoryTree);
+    }
+
+    @Override
+    public Result updateDirTree(String id, Map<String, String> map) {
+        DirectoryTree directoryTree = new DirectoryTree();
+        directoryTree.setId(Integer.valueOf(id));
+        directoryTree.setName(map.get("name"));
+        baseMapper.updateById(directoryTree);
+        return Result.success(null);
     }
 
     /**

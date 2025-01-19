@@ -7,6 +7,8 @@ import com.lss.hrbackend.service.DirectoryTreeService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 /**
  * @author lss
  * @description
@@ -32,5 +34,22 @@ public class DepartmentController {
     public Result addDirTree(@RequestBody DirectoryTree directoryTree){
         Result result = directoryTreeService.addMenu(directoryTree);
         return result;
+    }
+
+    /**
+     * 获取数据
+     * @param id 部门编码
+     * @return
+     */
+    @GetMapping ("/get/{id}")
+    public Result getDirTree(@PathVariable("id") String id){
+        Result result = directoryTreeService.getDetails(id);
+        return result;
+    }
+
+    @PutMapping("/update/{id}")
+    public Result updateDirTree(@PathVariable("id") String id,@RequestBody Map<String,String> map){
+        System.out.println(map);
+        return directoryTreeService.updateDirTree(id,map);
     }
 }
