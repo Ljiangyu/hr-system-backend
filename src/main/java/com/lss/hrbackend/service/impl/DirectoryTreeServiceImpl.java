@@ -46,6 +46,12 @@ public class DirectoryTreeServiceImpl extends ServiceImpl<DirectoryTreeMapper, D
         return Result.success(null);
     }
 
+    @Override
+    public Result delDirTree(String id) {
+        baseMapper.deleteById(id);
+        return Result.success(null);
+    }
+
     /**
      * 获取目录树
      *

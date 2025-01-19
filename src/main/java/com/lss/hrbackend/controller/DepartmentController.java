@@ -52,4 +52,9 @@ public class DepartmentController {
         System.out.println(map);
         return directoryTreeService.updateDirTree(id,map);
     }
+
+    @GetMapping("/delete/{id}")
+    public Result delDirTree(@PathVariable("id") String id){
+        return directoryTreeService.delDirTree(id);
+    }
 }

@@ -31,4 +31,6 @@ public interface DirectoryTreeService extends IService<DirectoryTree> {
     Result getDetails(String id);
 
     Result updateDirTree(String id, Map<String, String> map);
+
+    Result delDirTree(String id);
 }
