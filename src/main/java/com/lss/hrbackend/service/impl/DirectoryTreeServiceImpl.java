@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author 江里的鱼
@@ -23,6 +22,14 @@ import java.util.Objects;
 @Slf4j
 public class DirectoryTreeServiceImpl extends ServiceImpl<DirectoryTreeMapper, DirectoryTree>
         implements DirectoryTreeService {
+    @Override
+    public Result addMenu(DirectoryTree directoryTree) {
+        int insert = this.baseMapper.insert(directoryTree);
+        if (insert > 0)
+            return Result.success(null);
+        else return Result.error("更新失败！");
+    }
+
     /**
      * 获取目录树
      *

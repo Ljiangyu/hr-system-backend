@@ -5,9 +5,7 @@ import com.lss.hrbackend.domain.Vo.DirectoryVo;
 import com.lss.hrbackend.domain.entity.DirectoryTree;
 import com.lss.hrbackend.service.DirectoryTreeService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author lss
@@ -28,6 +26,11 @@ public class DepartmentController {
     @GetMapping("/menu")
     public Result<DirectoryTree> getDirTree(){
        Result<DirectoryTree> result = directoryTreeService.getMenu();
+        return result;
+    }
+    @PostMapping("/add")
+    public Result addDirTree(@RequestBody DirectoryTree directoryTree){
+        Result result = directoryTreeService.addMenu(directoryTree);
         return result;
     }
 }

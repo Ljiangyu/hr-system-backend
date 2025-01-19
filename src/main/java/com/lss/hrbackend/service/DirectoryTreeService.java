@@ -14,4 +14,10 @@ import com.lss.hrbackend.domain.entity.DirectoryTree;
 public interface DirectoryTreeService extends IService<DirectoryTree> {
 
     Result<DirectoryTree> getMenu();
+
+    /**
+     * 添加目录
+     * @return
+     */
+    Result addMenu(DirectoryTree directoryTree);
 }

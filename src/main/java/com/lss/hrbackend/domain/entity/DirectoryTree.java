@@ -27,6 +27,7 @@ public class DirectoryTree implements Serializable {
      */
     private String name;
 
+    private String leader;
     /**
      *
      */
